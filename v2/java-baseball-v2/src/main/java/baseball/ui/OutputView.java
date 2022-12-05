@@ -9,5 +9,6 @@ public class OutputView {
     }
 
     public void printResult(int correctCount) {
+        System.out.println(correctCount + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }

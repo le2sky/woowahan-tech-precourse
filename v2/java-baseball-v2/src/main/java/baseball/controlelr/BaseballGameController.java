@@ -33,8 +33,7 @@ public class BaseballGameController {
     }
 
     public void showGameResult() {
-        int correctCount = baseballGameReferee.getCorrectCount();
-        outputView.printResult(correctCount);
+        outputView.printResult(baseballGameReferee.getCorrectCount());
     }
 
     public void playOneRound() {
