@@ -1,10 +1,10 @@
 package baseball.controlelr;
 
-import baseball.BaseballGameRecord;
-import baseball.BaseballGameReferee;
 import baseball.common.GameCommand;
 import baseball.domain.BaseballGameAnswer;
 import baseball.domain.BaseballGameAnswerGenerator;
+import baseball.domain.BaseballGameRecord;
+import baseball.domain.BaseballGameReferee;
 import baseball.ui.InputView;
 import baseball.ui.OutputView;
 
@@ -52,5 +52,4 @@ public class BaseballGameController {
     private boolean isCorrect(int strikeCount) {
         return strikeCount == baseballGameReferee.getCorrectCount();
     }
-
 }

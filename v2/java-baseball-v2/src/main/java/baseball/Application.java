@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.controlelr.BaseballGameController;
+import baseball.domain.BaseballGame;
 import baseball.domain.BaseballGameAnswerGeneratorImpl;
 
 public class Application {

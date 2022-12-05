@@ -1,6 +1,4 @@
-package baseball;
-
-import baseball.domain.BaseballGameAnswer;
+package baseball.domain;
 
 public class BaseballGameReferee {
 

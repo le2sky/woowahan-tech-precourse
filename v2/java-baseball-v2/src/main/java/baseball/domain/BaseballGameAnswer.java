@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class BaseballGameAnswer {
+
     private static final String DUPLICATE_MESSAGE = "정답은 중복된 값으로 이루어질 수 없습니다.";
     private static final String NOT_IN_RANGE_NUMBER_MESSAGE = "각 숫자는 1부터 9 사이의 수입니다.";
     private static final String NUMBER_SIZE_MESSAGE = "적절한 갯수의 숫자를 입력해주세요. (갯수 제한): ";
