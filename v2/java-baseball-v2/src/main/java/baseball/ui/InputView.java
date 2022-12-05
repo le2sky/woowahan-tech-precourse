@@ -6,6 +6,11 @@ public class InputView {
 
     public static final String ONLY_INPUT_NUMBER_MESSAGE = "숫자만 입력할 수 있습니다.";
     public static final String INPUT_USER_GUESSING_MESSAGE = "숫자를 입력해주세요 :";
+    public static final String INPUT_RESTART_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+    private static String readLineWithoutWhiteSpace() {
+        return Console.readLine().replaceAll(" ", "");
+    }
 
     public String readUserGuessing() {
         System.out.print(INPUT_USER_GUESSING_MESSAGE);
@@ -13,17 +18,14 @@ public class InputView {
     }
 
     public String readRestartCommand() {
-        return null;
+        System.out.println(INPUT_RESTART_COMMAND_MESSAGE);
+        return getUserInputOrThrowing();
     }
 
     private String getUserInputOrThrowing() {
         String input = readLineWithoutWhiteSpace();
         validateInputNumberString(input);
         return input;
-    }
-
-    private static String readLineWithoutWhiteSpace() {
-        return Console.readLine().replaceAll(" ", "");
     }
 
     private void validateInputNumberString(String userGuessing) throws IllegalArgumentException {

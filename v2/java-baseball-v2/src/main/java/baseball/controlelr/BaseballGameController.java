@@ -2,6 +2,7 @@ package baseball.controlelr;
 
 import baseball.BaseballGameRecord;
 import baseball.BaseballGameReferee;
+import baseball.common.GameCommand;
 import baseball.ui.InputView;
 import baseball.ui.OutputView;
 
@@ -27,9 +28,10 @@ public class BaseballGameController {
         return baseballGameRecord.isGameEnd();
     }
 
-    public boolean isRestartable() {
-        String restartCommand = inputView.readRestartCommand();
-        return isRestartCommand(restartCommand);
+    public boolean isRestartable() throws IllegalArgumentException {
+        int restartCommand = Integer.parseInt(inputView.readRestartCommand());
+        GameCommand.validateWrongCommand(restartCommand);
+        return GameCommand.isRestartCommand(restartCommand);
     }
 
     public void showGameResult() {
@@ -46,10 +48,6 @@ public class BaseballGameController {
 
     private boolean isCorrect(int strikeCount) {
         return strikeCount == baseballGameReferee.getCorrectCount();
-    }
-
-    private boolean isRestartCommand(String restartCommand) {
-        return restartCommand.equals("1");
     }
 
 }
