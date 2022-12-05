@@ -17,7 +17,7 @@ public class BaseballGame {
     }
 
     private void processGamePlay() {
-        while (!requestGameisEnd()) {
+        while (!requestGameIsEnd()) {
             baseballGameController.playOneRound();
         }
     }
@@ -37,7 +37,7 @@ public class BaseballGame {
         return baseballGameController.isRestartable();
     }
 
-    private boolean requestGameisEnd() {
+    private boolean requestGameIsEnd() {
         return baseballGameController.isGameEnd();
     }
 }
