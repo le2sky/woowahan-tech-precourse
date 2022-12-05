@@ -1,4 +1,4 @@
-package baseball.controlelr;
+package baseball.controller;
 
 import baseball.common.GameCommand;
 import baseball.domain.BaseballGameAnswer;

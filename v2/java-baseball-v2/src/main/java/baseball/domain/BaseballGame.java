@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.controlelr.BaseballGameController;
+import baseball.controller.BaseballGameController;
 
 public class BaseballGame {
 
