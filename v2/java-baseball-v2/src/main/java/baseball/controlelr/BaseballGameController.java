@@ -13,16 +13,20 @@ public class BaseballGameController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
     private final BaseballGameRecord baseballGameRecord = new BaseballGameRecord();
-    private final BaseballGameReferee baseballGameReferee;
     private final BaseballGameAnswerGenerator baseballGameAnswerGenerator;
+
+    private BaseballGameReferee baseballGameReferee;
 
     public BaseballGameController(BaseballGameAnswerGenerator baseballGameAnswerGenerator) {
         this.baseballGameAnswerGenerator = baseballGameAnswerGenerator;
-        BaseballGameAnswer answer = baseballGameAnswerGenerator.generateRandomAnswer();
-        this.baseballGameReferee = new BaseballGameReferee(answer);
     }
 
     public void initializeGame() {
+        BaseballGameAnswer answer = baseballGameAnswerGenerator.generateRandomAnswer();
+        baseballGameReferee = new BaseballGameReferee(answer);
+    }
+
+    public void greeting() {
         outputView.printGreet();
     }
 
@@ -33,7 +37,11 @@ public class BaseballGameController {
     public boolean isRestartable() throws IllegalArgumentException {
         int restartCommand = Integer.parseInt(inputView.readRestartCommand());
         GameCommand.validateWrongCommand(restartCommand);
-        return GameCommand.isRestartCommand(restartCommand);
+        boolean returning = GameCommand.isRestartCommand(restartCommand);
+        if (returning)
+            changeRecordGameState();
+
+        return returning;
     }
 
     public void showGameResult() {
@@ -42,14 +50,28 @@ public class BaseballGameController {
 
     public void playOneRound() {
         String userGuessing = inputView.readUserGuessing();
-        BaseballGameAnswer userAnswer = baseballGameAnswerGenerator.generateAnswerFromInput(userGuessing);
+        BaseballGameAnswer userAnswer = getGameAnswer(userGuessing);
         int strikeCount = baseballGameReferee.getStrikeCount(userAnswer);
-        int ballCount = baseballGameReferee.getBallCount(userAnswer);
-        if (isCorrect(strikeCount))
-            baseballGameRecord.changeGameState();
+        int ballCount = baseballGameReferee.getBallCount(userAnswer) - strikeCount;
+
+        correctHandler(strikeCount);
+        outputView.printCorrectCount(strikeCount, ballCount);
     }
 
-    private boolean isCorrect(int strikeCount) {
+    private BaseballGameAnswer getGameAnswer(String userGuessing) {
+        return baseballGameAnswerGenerator.generateAnswerFromInput(userGuessing);
+    }
+
+    private void correctHandler(int strikeCount) {
+        if (isCorrectAll(strikeCount))
+            changeRecordGameState();
+    }
+
+    private void changeRecordGameState() {
+        baseballGameRecord.changeGameState();
+    }
+
+    private boolean isCorrectAll(int strikeCount) {
         return strikeCount == baseballGameReferee.getCorrectCount();
     }
 }

@@ -9,7 +9,8 @@ public class BaseballGameAnswer {
     private static final String NOT_IN_RANGE_NUMBER_MESSAGE = "각 숫자는 1부터 9 사이의 수입니다.";
     private static final String NUMBER_SIZE_MESSAGE = "적절한 갯수의 숫자를 입력해주세요. (갯수 제한): ";
     private static final int NUMBER_SIZE_LIMIT = 3;
-    List<Integer> answer;
+
+    private  final List<Integer> answer;
 
     public BaseballGameAnswer(List<Integer> answer) {
         validateDuplicatedNumber(answer);
@@ -18,8 +19,20 @@ public class BaseballGameAnswer {
         this.answer = answer;
     }
 
+    public int getNumberAt(int location) {
+        return answer.get(location);
+    }
+
     public int getAnswerLength() {
         return answer.size();
+    }
+
+    public boolean hasNumber(int target) {
+        return answer.contains(target);
+    }
+
+    public boolean isNumberAt(int target, int location) {
+        return answer.get(location).equals(target);
     }
 
     private void validateDuplicatedNumber(List<Integer> answer) {
@@ -31,7 +44,7 @@ public class BaseballGameAnswer {
 
     private void validateRangeNumber(List<Integer> answer) {
         for (Integer target : answer)
-            if (target >= 0 && target <= 9)
+            if (target < 1 || target > 9)
                 throw new IllegalArgumentException(NOT_IN_RANGE_NUMBER_MESSAGE);
     }
 

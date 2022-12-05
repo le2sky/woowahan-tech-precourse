@@ -8,25 +8,42 @@ public class BaseballGame {
 
     public BaseballGame(BaseballGameController baseballGameController) {
         this.baseballGameController = baseballGameController;
-        baseballGameController.initializeGame();
     }
 
     public void run() {
-        processGamePlay();
+        greeting();
+        repeatableProcess();
+    }
+
+
+    private void repeatableProcess() {
+        processPlay();
         processGameEnd();
     }
 
-    private void processGamePlay() {
-        while (!requestGameIsEnd()) {
-            baseballGameController.playOneRound();
-        }
+    private void processPlay() {
+        requestInitialization();
+        while(!requestGameIsEnd())
+            requestPlayOneRound();
     }
 
     private void processGameEnd() {
         requestPrintGameResult();
         if (requestRestartGame()) {
-            run();
+            repeatableProcess();
         }
+    }
+
+    private void requestInitialization() {
+        baseballGameController.initializeGame();
+    }
+
+    private boolean requestGameIsEnd() {
+        return baseballGameController.isGameEnd();
+    }
+
+    private void requestPlayOneRound() {
+        baseballGameController.playOneRound();
     }
 
     private void requestPrintGameResult() {
@@ -37,7 +54,7 @@ public class BaseballGame {
         return baseballGameController.isRestartable();
     }
 
-    private boolean requestGameIsEnd() {
-        return baseballGameController.isGameEnd();
+    private void greeting() {
+        baseballGameController.greeting();
     }
 }

@@ -3,9 +3,9 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class BaseballGameAnswerGeneratorImpl implements BaseballGameAnswerGenerator {
 
@@ -24,7 +24,7 @@ public class BaseballGameAnswerGeneratorImpl implements BaseballGameAnswerGenera
 
     @Override
     public BaseballGameAnswer generateAnswerFromInput(String input) {
-        List<Integer> guessing = Stream.of(input)
+        List<Integer> guessing = Arrays.stream(input.split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .collect(Collectors.toList());
