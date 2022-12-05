@@ -3,21 +3,23 @@ package baseball.controlelr;
 import baseball.BaseballGameRecord;
 import baseball.BaseballGameReferee;
 import baseball.common.GameCommand;
+import baseball.domain.BaseballGameAnswer;
+import baseball.domain.BaseballGameAnswerGenerator;
 import baseball.ui.InputView;
 import baseball.ui.OutputView;
 
 public class BaseballGameController {
 
-    private final InputView inputView;
-    private final OutputView outputView;
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+    private final BaseballGameRecord baseballGameRecord = new BaseballGameRecord();
     private final BaseballGameReferee baseballGameReferee;
-    private final BaseballGameRecord baseballGameRecord;
+    private final BaseballGameAnswerGenerator baseballGameAnswerGenerator;
 
-    public BaseballGameController(BaseballGameReferee baseballGameReferee) {
-        this.outputView = new OutputView();
-        this.inputView = new InputView();
-        this.baseballGameRecord = new BaseballGameRecord();
-        this.baseballGameReferee = baseballGameReferee;
+    public BaseballGameController(BaseballGameAnswerGenerator baseballGameAnswerGenerator) {
+        this.baseballGameAnswerGenerator = baseballGameAnswerGenerator;
+        BaseballGameAnswer answer = baseballGameAnswerGenerator.generateRandomAnswer();
+        this.baseballGameReferee = new BaseballGameReferee(answer);
     }
 
     public void initializeGame() {
@@ -40,8 +42,9 @@ public class BaseballGameController {
 
     public void playOneRound() {
         String userGuessing = inputView.readUserGuessing();
-        int strikeCount = baseballGameReferee.getStrikeCount(userGuessing);
-        int ballCount = baseballGameReferee.getBallCount(userGuessing);
+        BaseballGameAnswer userAnswer = baseballGameAnswerGenerator.generateAnswerFromInput(userGuessing);
+        int strikeCount = baseballGameReferee.getStrikeCount(userAnswer);
+        int ballCount = baseballGameReferee.getBallCount(userAnswer);
         if (isCorrect(strikeCount))
             baseballGameRecord.changeGameState();
     }
