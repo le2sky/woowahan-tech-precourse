@@ -49,8 +49,9 @@
  - [클린 코더스 강의 요약 - Function](https://le2ksy.tistory.com/34)
  - [클린 코더스 강의 요약 - Function Structure Part.1](https://le2ksy.tistory.com/41)
  
- ### 객체지향 생활 체조
+ ### 객체지향
  - [국군 도수 체조가 아니라 객체지향 생활 체조](https://le2ksy.tistory.com/36)
+ - [우아한객체지향 : 의존성을 이용해 설계 진화시키기](https://le2ksy.tistory.com/43)
  
  ### 테코톡 정리
  - [[테코톡 정리] 어썸오의 JVM Memory Layout](https://le2ksy.tistory.com/30)
