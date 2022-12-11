@@ -16,6 +16,7 @@ public class ProduceLottoService {
         LottoMachine lottoMachine = LottoMachineRepository.find();
         user.chargeMoney(money);
         user.buy(lottoMachine);
+
         return user.showLottos();
     }
 
