@@ -17,7 +17,12 @@ public class User {
     }
 
     public void draw(RaffleMachine raffleMachine) {
-
+        int size = histories.size();
+        for (LottoHistory history : histories) {
+            Lotto lotto = history.showLotto();
+            LottoPlace result = raffleMachine.draw(lotto);
+            history.writeResult(result);
+        }
     }
 
     public void buy(LottoMachine lottoMachine) {

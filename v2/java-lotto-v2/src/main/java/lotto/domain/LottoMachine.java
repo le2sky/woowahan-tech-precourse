@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LottoMachine {
 
-    public static final String CANT_BUY_MESSAGE = "로또 한장도 구매 못하는 투자금입니다.";
+    private final String CANT_BUY_MESSAGE = "로또 한장도 구매 못하는 투자금입니다.";
     private final int unitPrice = 1000;
     private final RandomGenerator randomGenerator;
 

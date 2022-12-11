@@ -2,7 +2,7 @@ package lotto.domain;
 
 public class Money {
 
-    public static final String MONEY_RANGE_MESSAEG = "0보다 작을 수는 없습니다.";
+    private final String MONEY_RANGE_MESSAGE = "0보다 작을 수는 없습니다.";
     private final long amount;
 
     public Money(long amount) {
@@ -16,6 +16,6 @@ public class Money {
 
     private void validateAmount(long amount) {
         if (amount < 0)
-            throw new IllegalArgumentException(MONEY_RANGE_MESSAEG);
+            throw new IllegalArgumentException(MONEY_RANGE_MESSAGE);
     }
 }
