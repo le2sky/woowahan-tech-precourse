@@ -30,7 +30,7 @@
  - [우아한테크코스 - 프리코스 2주차 회고](https://le2ksy.tistory.com/27)
  - [우아한테크코스 - 프리코스 3주차 회고](https://le2ksy.tistory.com/32)
  - [우아한테크코스 - 프리코스 4주차 회고](https://le2ksy.tistory.com/37)
- 
+ - [숫자야구게임, 로또 v2 느낀점](https://le2ksy.tistory.com/47)
  
  ## 포스팅 아카이브🪐
  
@@ -55,6 +55,7 @@
  ### 객체지향
  - [국군 도수 체조가 아니라 객체지향 생활 체조](https://le2ksy.tistory.com/36)
  - [우아한객체지향 : 의존성을 이용해 설계 진화시키기](https://le2ksy.tistory.com/43)
+ - [애플리케이션 아키텍처와 객체지향](https://le2ksy.tistory.com/45)
  
  ### 테코톡 정리
  - [[테코톡 정리] 어썸오의 JVM Memory Layout](https://le2ksy.tistory.com/30)
