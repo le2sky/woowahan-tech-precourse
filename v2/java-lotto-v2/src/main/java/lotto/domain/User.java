@@ -6,10 +6,9 @@ import java.util.List;
 public class User {
 
     private final List<LottoHistory> histories = new ArrayList<>();
-    private final Money investment;
+    private Money investment;
 
-
-    public User(Money investment) {
+    public void chargeMoney(Money investment) {
         this.investment = investment;
     }
 
@@ -17,11 +16,29 @@ public class User {
         return null;
     }
 
-    public void buy(LottoMachine lottoMachine) {
+    public void draw(RaffleMachine raffleMachine) {
 
     }
 
-    public void draw(RaffleMachine raffleMachine) {
+    public void buy(LottoMachine lottoMachine) {
+        List<Lotto> lottos = lottoMachine.produce(investment);
+        initializeHistories(lottos);
+    }
 
+    private void initializeHistories(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            LottoHistory history = new LottoHistory(lotto);
+            histories.add(history);
+        }
+    }
+
+    public List<Lotto> showLottos() {
+        List<Lotto> lottos = new ArrayList<>();
+        for (LottoHistory history : histories) {
+            Lotto lotto = history.showLotto();
+            lottos.add(lotto);
+        }
+
+        return lottos;
     }
 }
