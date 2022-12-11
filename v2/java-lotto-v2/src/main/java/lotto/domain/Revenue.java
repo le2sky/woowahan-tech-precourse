@@ -10,6 +10,6 @@ public class Revenue {
 
     @Override
     public String toString() {
-        return String.format("%.2f", amount);
+        return String.format("%.1f", amount) + "%";
     }
 }

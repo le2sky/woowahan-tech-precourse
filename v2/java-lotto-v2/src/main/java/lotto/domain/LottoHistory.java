@@ -17,4 +17,8 @@ public class LottoHistory {
     public Lotto showLotto() {
         return lotto;
     }
+
+    public LottoPlace showPlace() {
+        return lottoPlace;
+    }
 }

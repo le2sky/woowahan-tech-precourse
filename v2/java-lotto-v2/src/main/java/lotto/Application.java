@@ -4,9 +4,13 @@ import lotto.controller.LottoController;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         LottoController lottoController = new LottoController();
-        lottoController.produceLotto();
-        lottoController.drawLotto();
+        try {
+            lottoController.produceLotto();
+            lottoController.drawLotto();
+            lottoController.showResult();
+        } catch (Exception e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
 }

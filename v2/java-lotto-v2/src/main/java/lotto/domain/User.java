@@ -13,7 +13,13 @@ public class User {
     }
 
     public Revenue calculateRevenue() {
-        return null;
+        long sum = 0;
+        for (LottoHistory history : histories) {
+            LottoPlace lottoPlace = history.showPlace();
+            sum += lottoPlace.getPrize();
+        }
+
+        return new Revenue((double) sum / investment.getAmount() * 100);
     }
 
     public void draw(RaffleMachine raffleMachine) {
@@ -28,6 +34,10 @@ public class User {
     public void buy(LottoMachine lottoMachine) {
         List<Lotto> lottos = lottoMachine.produce(investment);
         initializeHistories(lottos);
+    }
+
+    public List<LottoHistory> getHistories() {
+        return histories;
     }
 
     private void initializeHistories(List<Lotto> lottos) {

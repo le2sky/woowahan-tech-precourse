@@ -1,7 +1,10 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoHistory;
 import lotto.domain.Money;
+import lotto.domain.Revenue;
+import lotto.service.DisplayResultService;
 import lotto.service.DrawLottoService;
 import lotto.service.ProduceLottoService;
 import lotto.service.SeedDataSourceService;
@@ -9,15 +12,14 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class LottoController {
     private final SeedDataSourceService seedDataSourceService;
     private final ProduceLottoService produceLottoService;
     private final DrawLottoService drawLottoService;
+    private final DisplayResultService displayResultService;
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -27,6 +29,7 @@ public class LottoController {
         this.seedDataSourceService = new SeedDataSourceService();
         this.produceLottoService = new ProduceLottoService();
         this.drawLottoService = new DrawLottoService();
+        this.displayResultService = new DisplayResultService();
         this.inputView = new InputView();
         this.outputView = new OutputView();
         seedDataSourceService.seeding();
@@ -50,6 +53,14 @@ public class LottoController {
 
         drawLottoService.decideAnswer(answer, bonus);
         drawLottoService.draw();
+    }
+
+    public void showResult() {
+        List<LottoHistory> lottoHistories = displayResultService.showHistories();
+        Revenue revenue = displayResultService.calculateRevenue();
+
+        outputView.printHistories(lottoHistories);
+        outputView.printRevenue(revenue);
     }
 
 }
