@@ -6,25 +6,33 @@ public class ControllerResolver {
     private final MakeBridgeController makeBridgeController;
     private final RestartController restartController;
     private final ShowResultController showResultController;
+    private final ShowErrorController showErrorController;
     private final MoveBridgeController moveBridgeController;
     private final RoundCheckService roundCheckService;
     private boolean isGameRunning;
+    private boolean initialized;
 
     public ControllerResolver() {
         this.makeBridgeController = new MakeBridgeController();
         this.restartController = new RestartController();
         this.showResultController = new ShowResultController();
+        this.showErrorController = new ShowErrorController();
         this.moveBridgeController = new MoveBridgeController();
         this.roundCheckService = new RoundCheckService();
         this.isGameRunning = true;
+        this.initialized = false;
     }
-
 
     public void run() {
         try {
             process();
-        } catch (Exception e) {
+        } catch (Exception err) {
+            handleError(err);
         }
+    }
+
+    private void handleError(Exception err) {
+        showErrorController.printError(err);
     }
 
     private void process() {
@@ -37,7 +45,10 @@ public class ControllerResolver {
     }
 
     private void processSetting() {
-        makeBridgeController.make();
+        if (!initialized) {
+            makeBridgeController.make();
+            initialized = true;
+        }
     }
 
     private void processPlay() {
@@ -47,8 +58,8 @@ public class ControllerResolver {
 
     private void processFail() {
         if (roundCheckService.checkFail()) {
-            isGameRunning = false;
             restartController.restart();
+            isGameRunning = false;
         }
 
         if (roundCheckService.checkPlay())
@@ -57,8 +68,8 @@ public class ControllerResolver {
 
     private void processSuccess() {
         if (roundCheckService.checkSuccess()) {
-            isGameRunning = false;
             showResultController.showResult();
+            isGameRunning = false;
         }
     }
 }

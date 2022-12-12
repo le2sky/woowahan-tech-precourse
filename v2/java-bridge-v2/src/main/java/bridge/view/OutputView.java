@@ -9,6 +9,14 @@ import java.util.List;
 
 public class OutputView {
 
+    public void printError(Exception err) {
+        String[] names = err.getClass()
+                .getName()
+                .split("\\.");
+
+        System.out.println("[ERROR] " + names[names.length - 1]);
+    }
+
     public void printMap(GameHistoryDto history) {
         HashMap<BridgeDirection, List<String>> histories = history.getHistory();
         printResultByOneDirection(histories.get(BridgeDirection.UPPER));
@@ -21,6 +29,7 @@ public class OutputView {
         System.out.println("게임 성공 여부: " + result.getBridgeGameProgress().getStatus());
         System.out.println("총 시도한 횟수: " + result.getRetry());
     }
+
 
     private void printResultByOneDirection(List<String> pages) {
         String line = String.join(" | ", pages);

@@ -1,7 +1,6 @@
 package bridge.controller;
 
 import bridge.common.constant.BridgeDirection;
-import bridge.domain.BridgeGameHistory;
 import bridge.dto.GameHistoryDto;
 import bridge.service.MoveBridgeService;
 import bridge.view.InputView;

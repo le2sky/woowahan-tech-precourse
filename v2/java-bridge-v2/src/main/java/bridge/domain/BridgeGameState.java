@@ -18,7 +18,6 @@ public class BridgeGameState {
         this.progress = bridgeGameProgress;
     }
 
-
     public void cross() {
         nowFloor++;
     }
