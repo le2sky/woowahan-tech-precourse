@@ -2,22 +2,19 @@ package baseball.dto;
 
 public class BaseballGameResultDto {
 
-    private int strike;
-    private int ball;
+    private final int strike;
+    private final int ball;
+
+    public BaseballGameResultDto(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
 
     public int getStrike() {
         return strike;
     }
 
-    public void setStrike(int strike) {
-        this.strike = strike;
-    }
-
     public int getBall() {
         return ball;
-    }
-
-    public void setBall(int ball) {
-        this.ball = ball;
     }
 }

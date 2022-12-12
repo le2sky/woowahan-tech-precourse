@@ -12,6 +12,19 @@ public class BaseballNumber {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public boolean hit(int target, int index) {
+        return numbers.get(index).equals(target);
+    }
+
+    public boolean contain(int target) {
+        return numbers.contains(target);
+    }
+
+
     private void validate(List<Integer> numbers) {
         validateDuplicate(numbers);
         validateNumbersSize(numbers);

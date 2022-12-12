@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.dto.BaseballGameResultDto;
+
 public class BaseballGame {
     private GameState gameState;
 
@@ -9,5 +11,21 @@ public class BaseballGame {
 
     public void changeMode(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public boolean isGameEnd() {
+        return gameState.equals(GameState.END);
+    }
+
+    public BaseballGameResultDto judge(BaseballNumber guess, Referee referee) {
+        BaseballGameResultDto baseballGameResultDto = referee.judge(guess);
+        if (isHitNumber(baseballGameResultDto))
+            changeMode(GameState.END);
+
+        return baseballGameResultDto;
+    }
+
+    private boolean isHitNumber(BaseballGameResultDto baseballGameResultDto) {
+        return baseballGameResultDto.getStrike() == 3;
     }
 }
