@@ -1,11 +1,11 @@
 package bridge.domain;
 
-public enum GameProgress {
+public enum BridgeGameProgress {
     SUCCESS("성공"), FAIL("실패"), PLAY("진행중");
 
     private final String status;
 
-    GameProgress(String status) {
+    BridgeGameProgress(String status) {
         this.status = status;
     }
 

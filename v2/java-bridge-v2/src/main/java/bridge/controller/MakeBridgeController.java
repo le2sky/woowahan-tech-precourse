@@ -5,8 +5,8 @@ import bridge.view.InputView;
 
 public class MakeBridgeController {
 
-    private InputView inputView;
-    private MakeBridgeService makeBridgeService;
+    private final InputView inputView;
+    private final MakeBridgeService makeBridgeService;
 
     public MakeBridgeController() {
         this.inputView = new InputView();

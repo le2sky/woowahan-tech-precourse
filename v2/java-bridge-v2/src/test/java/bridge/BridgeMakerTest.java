@@ -1,6 +1,6 @@
 package bridge;
 
-import bridge.common.BridgeDirection;
+import bridge.common.constant.BridgeDirection;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

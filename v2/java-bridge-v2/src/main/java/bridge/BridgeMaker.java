@@ -1,6 +1,6 @@
 package bridge;
 
-import bridge.common.BridgeDirection;
+import bridge.common.constant.BridgeDirection;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,7 +38,7 @@ public class BridgeMaker {
     private HashMap<Integer, String> getDirection() {
         HashMap<Integer, String> command = new HashMap<>();
         command.put(BridgeDirection.UPPER.getIndex(), BridgeDirection.UPPER.getKeyword());
-        command.put(BridgeDirection.LOWWER.getIndex(), BridgeDirection.LOWWER.getKeyword());
+        command.put(BridgeDirection.LOWER.getIndex(), BridgeDirection.LOWER.getKeyword());
 
         return command;
     }

@@ -17,16 +17,10 @@ public class InputView {
         return read;
     }
 
-    private void validateNumberString(String read) {
-        try {
-            Integer.parseInt(read);
-        } catch (Exception e) {
-            throw new NotNumberStringException();
-        }
-    }
 
     public String readMoving() {
-        return null;
+        System.out.println("이동할 칸을 선택해주세요. (위: U, 아래: D)");
+        return readLine();
     }
 
     /**
@@ -39,6 +33,14 @@ public class InputView {
 
     private String readLine() {
         return Console.readLine().replaceAll(" ", "");
+    }
+
+    private void validateNumberString(String read) {
+        try {
+            Integer.parseInt(read);
+        } catch (Exception e) {
+            throw new NotNumberStringException();
+        }
     }
 
     public static class NotNumberStringException extends IllegalArgumentException {

@@ -1,27 +1,66 @@
 package bridge.domain;
 
+import bridge.common.constant.BridgeDirection;
+
 /**
  * 다리 건너기 게임을 관리하는 클래스
  */
 public class BridgeGame {
 
-    private BridgeGameState state;
-    private Bridge bridge;
+    private final BridgeGameState state;
+    private final Bridge bridge;
 
-
-    /**
-     * 사용자가 칸을 이동할 때 사용하는 메서드
-     * <p>
-     * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
-     */
-    public void move() {
+    public BridgeGame(Bridge bridge) {
+        this.bridge = bridge;
+        this.state = new BridgeGameState();
     }
 
-    /**
-     * 사용자가 게임을 다시 시도할 때 사용하는 메서드
-     * <p>
-     * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
-     */
+    public void move(BridgeDirection direction, BridgeGameHistory history) {
+        int nowFloor = state.getNowFloor();
+        boolean movable = bridge.isMovable(nowFloor, direction);
+        changeGameStateWithCondition(nowFloor, movable);
+        write(movable, direction, history);
+    }
+
+    public void write(boolean movable, BridgeDirection direction, BridgeGameHistory history) {
+        if (movable)
+            history.writeSuccess(direction);
+
+        if (!movable)
+            history.writeFail(direction);
+    }
+
+
     public void retry() {
+    }
+
+    public boolean isSuccess() {
+        return state.getProgress().equals(BridgeGameProgress.SUCCESS);
+    }
+
+    public boolean isFail() {
+        return state.getProgress().equals(BridgeGameProgress.FAIL);
+    }
+
+    public boolean isPlay() {
+        return state.getProgress().equals(BridgeGameProgress.PLAY);
+    }
+
+    private void changeGameStateWithCondition(int nowFloor, boolean movable) {
+        changeGameStateIfFail(movable);
+        changeGameStateIfSuccess(movable, nowFloor);
+    }
+
+    private void changeGameStateIfSuccess(boolean movable, int nowFloor) {
+        if (movable && bridge.isPassed(nowFloor))
+            state.changeProgress(BridgeGameProgress.SUCCESS);
+
+        if (movable)
+            state.cross();
+    }
+
+    private void changeGameStateIfFail(boolean movable) {
+        if (!movable)
+            state.changeProgress(BridgeGameProgress.FAIL);
     }
 }

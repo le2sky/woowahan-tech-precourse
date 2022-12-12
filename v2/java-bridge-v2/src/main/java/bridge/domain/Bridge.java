@@ -1,6 +1,6 @@
 package bridge.domain;
 
-import bridge.common.BridgeDirection;
+import bridge.common.constant.BridgeDirection;
 
 import java.util.List;
 
@@ -13,11 +13,19 @@ public class Bridge {
         this.bridge = bridge;
     }
 
+    public boolean isMovable(int nowFloor, BridgeDirection direction) {
+        return bridge.get(nowFloor).equals(direction.getKeyword());
+    }
+
+    public boolean isPassed(int nowFloor) {
+        return nowFloor == bridge.size() - 1;
+    }
+
     private void validateBridgeFloor(List<String> bridge) {
-        bridge.forEach((floor) -> {
-            if (BridgeDirection.isBridgeDirection(floor))
+        for (String floor : bridge) {
+            if (!BridgeDirection.isBridgeDirection(floor))
                 throw new IllegalBridgeFloorException();
-        });
+        }
     }
 
     private void validateBridgeSize(List<String> bridge) {

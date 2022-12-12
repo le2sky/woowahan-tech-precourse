@@ -1,28 +1,39 @@
 package bridge.domain;
 
 public class BridgeGameState {
+
+    private BridgeGameProgress progress;
     private int retry;
-    private GameProgress progress;
+    private int nowFloor;
 
     public BridgeGameState() {
+        this.progress = BridgeGameProgress.PLAY;
         this.retry = 0;
-        this.progress = GameProgress.PLAY;
-
+        this.nowFloor = 0;
     }
 
-    public void increaseRetry() {
+    public void changeProgress(BridgeGameProgress bridgeGameProgress) {
+        this.progress = bridgeGameProgress;
+    }
+
+    public BridgeGameProgress getProgress() {
+        return progress;
+    }
+
+    public void cross() {
+        nowFloor++;
+    }
+
+    public void retry() {
+        nowFloor = 0;
         retry++;
-    }
-
-    public void changeProgress(GameProgress gameProgress) {
-        this.progress = gameProgress;
     }
 
     public int getRetry() {
         return retry;
     }
 
-    public GameProgress getProgress() {
-        return progress;
+    public int getNowFloor() {
+        return nowFloor;
     }
 }
