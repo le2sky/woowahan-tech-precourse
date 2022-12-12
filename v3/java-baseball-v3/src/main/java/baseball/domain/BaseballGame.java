@@ -13,6 +13,10 @@ public class BaseballGame {
         this.gameState = gameState;
     }
 
+    public void restart() {
+        changeMode(GameState.PLAY);
+    }
+
     public boolean isGameEnd() {
         return gameState.equals(GameState.END);
     }

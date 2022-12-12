@@ -27,6 +27,7 @@ public class Referee {
             if (answer.contain(target))
                 ball++;
         }
+
         return ball;
     }
 
