@@ -6,6 +6,8 @@ package bridge.domain;
 public class BridgeGame {
 
     private BridgeGameState state;
+    private Bridge bridge;
+
 
     /**
      * 사용자가 칸을 이동할 때 사용하는 메서드
