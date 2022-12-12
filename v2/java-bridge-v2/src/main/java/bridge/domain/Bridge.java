@@ -22,10 +22,8 @@ public class Bridge {
     }
 
     private void validateBridgeFloor(List<String> bridge) {
-        for (String floor : bridge) {
-            if (!BridgeDirection.isBridgeDirection(floor))
-                throw new IllegalBridgeFloorException();
-        }
+        for (String floor : bridge)
+            BridgeDirection.from(floor);
     }
 
     private void validateBridgeSize(List<String> bridge) {
@@ -39,9 +37,6 @@ public class Bridge {
     }
 
     public static class RangeUnderFlowException extends IllegalArgumentException {
-    }
-
-    public static class IllegalBridgeFloorException extends IllegalArgumentException {
     }
 }
 

@@ -31,7 +31,7 @@ class BridgeMakerTest {
     void makeBridge_다리는_U_또는_D로_이루어졌다() {
         List<String> bridge = bridgeMaker.makeBridge(5);
         int size = (int) bridge.stream()
-                .filter(BridgeDirection::isBridgeDirection)
+                .map(BridgeDirection::from)
                 .count();
 
         assertThat(size).isEqualTo(5);

@@ -1,6 +1,7 @@
 package bridge.domain;
 
 import bridge.common.constant.BridgeDirection;
+import bridge.dto.GameHistoryDto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,9 +36,14 @@ public class BridgeGameHistory {
         history = new HashMap<>();
     }
 
-    private void writeOtherPage(BridgeDirection direciton) {
-        List<String> otherPage = history.getOrDefault(direciton.otherwise(), new ArrayList<>());
+    public GameHistoryDto build() {
+        HashMap<BridgeDirection, List<String>> readonly = new HashMap<>(history);
+        return new GameHistoryDto(readonly);
+    }
+
+    private void writeOtherPage(BridgeDirection direction) {
+        List<String> otherPage = history.getOrDefault(direction.otherwise(), new ArrayList<>());
         otherPage.add(EMPTY_SHAPE);
-        history.put(direciton.otherwise(), otherPage);
+        history.put(direction.otherwise(), otherPage);
     }
 }

@@ -1,20 +1,23 @@
 package bridge.view;
 
 import bridge.common.constant.BridgeDirection;
-import bridge.domain.BridgeGameHistory;
+import bridge.dto.GameHistoryDto;
+import bridge.dto.GameResultDto;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class OutputView {
 
-    public void printMap(BridgeGameHistory history) {
+    public void printMap(GameHistoryDto history) {
         HashMap<BridgeDirection, List<String>> histories = history.getHistory();
         printResultByOneDirection(histories.get(BridgeDirection.UPPER));
         printResultByOneDirection(histories.get(BridgeDirection.LOWER));
     }
 
-    public void printResult() {
+    public void printResult(GameResultDto result) {
+        System.out.println("게임 성공 여부: " + result.getBridgeGameProgress().getStatus());
+        System.out.println("총 시도한 횟수: " + result.getRetry());
     }
 
     private void printResultByOneDirection(List<String> pages) {

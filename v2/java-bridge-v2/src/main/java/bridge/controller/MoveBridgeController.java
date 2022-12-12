@@ -2,6 +2,7 @@ package bridge.controller;
 
 import bridge.common.constant.BridgeDirection;
 import bridge.domain.BridgeGameHistory;
+import bridge.dto.GameHistoryDto;
 import bridge.service.MoveBridgeService;
 import bridge.view.InputView;
 import bridge.view.OutputView;
@@ -21,7 +22,7 @@ public class MoveBridgeController {
     public void move() {
         String direction = inputView.readMoving();
         moveBridgeService.move(BridgeDirection.from(direction));
-        BridgeGameHistory history = moveBridgeService.getHistory();
+        GameHistoryDto history = moveBridgeService.getHistory();
         outputView.printMap(history);
     }
 }

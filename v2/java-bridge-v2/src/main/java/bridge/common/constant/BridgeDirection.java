@@ -37,11 +37,6 @@ public enum BridgeDirection {
         throw new NotSupportDirectionCommandException();
     }
 
-    public static boolean isBridgeDirection(String direction) {
-        return direction.equals(UPPER.getKeyword()) ||
-                direction.equals(LOWER.getKeyword());
-    }
-
     public static class NotSupportDirectionCommandException extends IllegalArgumentException {
     }
 }

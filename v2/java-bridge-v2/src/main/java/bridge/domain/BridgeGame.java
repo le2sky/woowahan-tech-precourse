@@ -1,10 +1,9 @@
 package bridge.domain;
 
 import bridge.common.constant.BridgeDirection;
+import bridge.common.constant.BridgeGameProgress;
+import bridge.dto.GameResultDto;
 
-/**
- * 다리 건너기 게임을 관리하는 클래스
- */
 public class BridgeGame {
 
     private final BridgeGameState state;
@@ -30,8 +29,10 @@ public class BridgeGame {
             history.writeFail(direction);
     }
 
-
-    public void retry() {
+    public void retry(BridgeGameHistory history) {
+        state.changeProgress(BridgeGameProgress.PLAY);
+        state.retry();
+        history.reset();
     }
 
     public boolean isSuccess() {
@@ -45,6 +46,11 @@ public class BridgeGame {
     public boolean isPlay() {
         return state.getProgress().equals(BridgeGameProgress.PLAY);
     }
+
+    public GameResultDto result() {
+        return new GameResultDto(state.getRetry(), state.getProgress());
+    }
+
 
     private void changeGameStateWithCondition(int nowFloor, boolean movable) {
         changeGameStateIfFail(movable);

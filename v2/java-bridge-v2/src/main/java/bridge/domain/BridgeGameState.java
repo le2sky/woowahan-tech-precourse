@@ -1,5 +1,7 @@
 package bridge.domain;
 
+import bridge.common.constant.BridgeGameProgress;
+
 public class BridgeGameState {
 
     private BridgeGameProgress progress;
@@ -16,9 +18,6 @@ public class BridgeGameState {
         this.progress = bridgeGameProgress;
     }
 
-    public BridgeGameProgress getProgress() {
-        return progress;
-    }
 
     public void cross() {
         nowFloor++;
@@ -27,6 +26,10 @@ public class BridgeGameState {
     public void retry() {
         nowFloor = 0;
         retry++;
+    }
+
+    public BridgeGameProgress getProgress() {
+        return progress;
     }
 
     public int getRetry() {

@@ -1,4 +1,4 @@
-package bridge.domain;
+package bridge.common.constant;
 
 public enum BridgeGameProgress {
     SUCCESS("성공"), FAIL("실패"), PLAY("진행중");
