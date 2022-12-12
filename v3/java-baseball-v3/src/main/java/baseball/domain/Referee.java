@@ -4,13 +4,13 @@ import baseball.dto.BaseballGameResultDto;
 
 public class Referee {
 
-    private final Answer answer;
+    private BaseballNumber answer;
 
-    public Referee(Answer answer) {
+    public void decideAnswer(BaseballNumber answer) {
         this.answer = answer;
     }
 
-    public BaseballGameResultDto result() {
+    public BaseballGameResultDto judge(BaseballNumber baseballNumber) {
         return null;
     }
 }
