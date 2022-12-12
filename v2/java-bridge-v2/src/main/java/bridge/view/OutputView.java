@@ -15,7 +15,9 @@ public class OutputView {
         printResultByOneDirection(histories.get(BridgeDirection.LOWER));
     }
 
-    public void printResult(GameResultDto result) {
+    public void printResult(GameResultDto result, GameHistoryDto history) {
+        System.out.println("최종 게임 결과");
+        printMap(history);
         System.out.println("게임 성공 여부: " + result.getBridgeGameProgress().getStatus());
         System.out.println("총 시도한 횟수: " + result.getRetry());
     }

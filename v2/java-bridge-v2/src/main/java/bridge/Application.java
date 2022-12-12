@@ -1,17 +1,15 @@
 package bridge;
 
 import bridge.common.seeder.DataSourceSeeder;
-import bridge.controller.MakeBridgeController;
-import bridge.controller.MoveBridgeController;
+import bridge.controller.ControllerResolver;
 
 public class Application {
 
+    private static final ControllerResolver controllerResolver = new ControllerResolver();
+    private static final DataSourceSeeder dataSourceSeeder = new DataSourceSeeder();
+
     public static void main(String[] args) {
-        MakeBridgeController makeBridgeController = new MakeBridgeController();
-        MoveBridgeController moveBridgeController = new MoveBridgeController();
-        DataSourceSeeder dataSourceSeeder = new DataSourceSeeder();
-        dataSourceSeeder.seeding();
-        makeBridgeController.make();
-        moveBridgeController.move();
+        dataSourceSeeder.seed();
+        controllerResolver.run();
     }
 }

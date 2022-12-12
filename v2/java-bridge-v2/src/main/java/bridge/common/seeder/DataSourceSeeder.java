@@ -5,7 +5,7 @@ import bridge.repository.BridgeGameHistoryRepository;
 
 public class DataSourceSeeder {
 
-    public void seeding() {
+    public void seed() {
         BridgeGameHistoryRepository.save(new BridgeGameHistory());
     }
 }

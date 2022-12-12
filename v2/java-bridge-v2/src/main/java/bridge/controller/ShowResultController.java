@@ -1,5 +1,6 @@
 package bridge.controller;
 
+import bridge.dto.GameHistoryDto;
 import bridge.dto.GameResultDto;
 import bridge.service.ShowResultService;
 import bridge.view.OutputView;
@@ -16,6 +17,7 @@ public class ShowResultController {
 
     public void showResult() {
         GameResultDto result = showResultService.getResult();
-        outputView.printResult(result);
+        GameHistoryDto history = showResultService.getHistory();
+        outputView.printResult(result, history);
     }
 }

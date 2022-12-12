@@ -1,6 +1,5 @@
 package bridge.repository;
 
-import bridge.domain.Bridge;
 import bridge.domain.BridgeGame;
 
 public class BridgeGameRepository {
