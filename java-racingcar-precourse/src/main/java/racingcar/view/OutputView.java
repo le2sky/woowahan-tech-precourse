@@ -26,6 +26,7 @@ public class OutputView {
         for (Map.Entry<String, Integer> entry : entries) {
             System.out.printf("%s : " + getLines(entry.getValue()) + "%n", entry.getKey());
         }
+        System.out.println();
     }
 
     private String getLines(Integer value) {
@@ -35,5 +36,9 @@ public class OutputView {
         }
 
         return line.toString();
+    }
+
+    public void printError(Exception err) {
+        System.out.println("[ERROR] " + err.getClass().getSimpleName());
     }
 }

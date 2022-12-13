@@ -17,7 +17,7 @@ public class InputView {
     }
 
     private void validateNumberString(String read) {
-        if (!read.matches("^[0-9]"))
+        if (!read.matches("^[0-9]*$"))
             throw new NotNumberStringException();
     }
 

@@ -1,7 +1,15 @@
 package racingcar;
 
+import racingcar.common.seeder.DataSourceSeeder;
+import racingcar.controller.ControllerResolver;
+
 public class Application {
+
+    private static ControllerResolver controllerResolver = new ControllerResolver();
+    private static DataSourceSeeder dataSourceSeeder = new DataSourceSeeder();
+
     public static void main(String[] args) {
-        // TODO 구현 진행
+        dataSourceSeeder.seed();
+        controllerResolver.run();
     }
 }
