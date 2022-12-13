@@ -17,7 +17,9 @@
 
 
 
-## 코드 아카이브🪐
+## 프리코스 제출 코드 아카이브🪐
+ 
+> 아래 이외 코드들은 최종 코딩 테스트 연습용입니다. 
  
  - [자바 온보딩 미션 원본 다운스트림](https://github.com/le2sky/java-onboarding/tree/le2sky)
  - [자바 숫자야구게임 미션 원본 다운스트림](https://github.com/le2sky/java-baseball/tree/le2sky)
@@ -31,6 +33,7 @@
  - [우아한테크코스 - 프리코스 3주차 회고](https://le2ksy.tistory.com/32)
  - [우아한테크코스 - 프리코스 4주차 회고](https://le2ksy.tistory.com/37)
  - [숫자야구게임, 로또 v2 느낀점](https://le2ksy.tistory.com/47)
+ - [다리 건너기 게임 v2, 숫자야구게임 v3 느낀점](https://le2ksy.tistory.com/48)
  
  ## 포스팅 아카이브🪐
  
