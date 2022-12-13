@@ -9,6 +9,18 @@ public class Car {
         this.name = name;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void move() {
+        position++;
+    }
+
     private void validateName(String name) {
         if (name.length() > 5)
             throw new NameOverLengthException();
@@ -16,8 +28,6 @@ public class Car {
         if (name.length() == 0)
             throw new UnknownCarNameException();
     }
-
-    // 추가 기능 구현
 
     public static class NameOverLengthException extends IllegalArgumentException {
     }
