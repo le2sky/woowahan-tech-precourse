@@ -9,8 +9,22 @@ public class InputView {
         return readLine();
     }
 
+    public String readRound() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        String read = readLine();
+        validateNumberString(read);
+        return read;
+    }
+
+    private void validateNumberString(String read) {
+        if (!read.matches("^[0-9]"))
+            throw new NotNumberStringException();
+    }
+
     private String readLine() {
         return Console.readLine().replaceAll(" ", "");
     }
 
+    public static class NotNumberStringException extends IllegalArgumentException {
+    }
 }
