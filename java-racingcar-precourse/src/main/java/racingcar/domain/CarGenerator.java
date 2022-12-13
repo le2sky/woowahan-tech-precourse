@@ -1,11 +1,8 @@
 package racingcar.domain;
 
 public class CarGenerator {
-    private final RandomNumberGenerator randomNumberGenerator;
 
-    public CarGenerator(RandomNumberGenerator randomNumberGenerator) {
-        this.randomNumberGenerator = randomNumberGenerator;
+    public Car generate(String name) {
+        return new Car(name);
     }
-    
-
 }
