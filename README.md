@@ -14,19 +14,7 @@
 
 ## 홈페이지 바로가기🪐
 
-- [우아한테크코스 공식 홈페이지 바로가기](https://woowacourse.github.io/) 
 - [프리코스 커뮤니티 바로가기](https://github.com/orgs/woowacourse-precourse/discussions)
-
-
-
-## 프리코스 제출 코드 아카이브🪐
- 
-> 아래 이외 코드들은 최종 코딩 테스트 연습용입니다. 
- 
- - [자바 온보딩 미션 원본 다운스트림](https://github.com/le2sky/java-onboarding/tree/le2sky)
- - [자바 숫자야구게임 미션 원본 다운스트림](https://github.com/le2sky/java-baseball/tree/le2sky)
- - [자바 로또 미션 원본 다운스트림](https://github.com/le2sky/java-lotto/tree/le2sky)
- - [자바 다리 건너기 게임 미션 원본 다운스트림](https://github.com/le2sky/java-bridge/tree/le2sky)
  
  
  ## 회고록 아카이브🪐 
